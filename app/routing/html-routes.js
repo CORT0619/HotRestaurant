@@ -4,7 +4,7 @@
 // ===============================================================================
 var path = require('path');
 
-
+var tableArray = require('../data/table-data.js');
 
 
 
@@ -21,7 +21,7 @@ module.exports = function(app){
 
 	app.get('/tables', function(req, res){
 		//res.sendFile(path.join(__dirname + '/../public/tables.html'));
-		res.render('tables');
+		res.render('tables', {tables: tableArray});
 	});
 
 	app.get('/reserve', function(req, res){
