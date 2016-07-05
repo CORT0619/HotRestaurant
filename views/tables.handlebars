@@ -8,16 +8,25 @@
 					</div>
 					<div class="panel-body" id="tableSection">
 					 {{#each tables}}
-					 	<div class="well">
-					 		<!--<script type="text/javascript">
-					 			for(var i=0; i < tables.length; i++){
+					 		<script type="text/javascript">
 
-					 			}
+					 			var i=0;
 
-					 		</script>-->
-					 		{{this.customerID}}
+								// Create the HTML Well (Section) and Add the table content for each reserved table
+								var tableSection = $("<div>");
+								tableSection.addClass('well');
+								tableSection.html("{{this.customerID}}");
+								tableSection.attr('id', 'tableWell-' + i+1)
+								$('#tableSection').append(tableSection);
 
-					 	</div>
+								var tableNumber = i + 1;
+
+
+								// Then display the remaining fields in the HTML (Section Name, Date, URL)
+								$("#tableWell-"+ i+1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + tableData[i].customerID + "</h2>");
+								i++;
+
+					 		</script>
 					 {{/each}}
 					</div>
 				</div>
@@ -40,7 +49,7 @@
 	// We then dynamically display this content in our table. This is very similar to the group projects you just completed.
 	// It's also very similar to the NYT search application. In fact, I copied a ton of code from there. 
 
-	function runTableQuery(){
+	/*function runTableQuery(){
 
 		// Here we get the location of the root page. 
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
@@ -75,7 +84,7 @@
 					$("#tableWell-"+ i+1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + tableData[i].customerID + "</h2>");
 				}
 			});
-	}
+	}*/
 
 	function runWaitListQuery(){
 

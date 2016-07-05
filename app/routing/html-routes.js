@@ -20,18 +20,15 @@ module.exports = function(app){
 	// ---------------------------------------------------------------------------
 
 	app.get('/tables', function(req, res){
-		//res.sendFile(path.join(__dirname + '/../public/tables.html'));
 		res.render('tables', {tables: tableArray});
 	});
 
 	app.get('/reserve', function(req, res){
-		//res.sendFile(path.join(__dirname + '/../public/reserve.html'));
 		res.render('reserve');
 	});
 
 	// If no matching route is found default to home
 	app.use(function(req, res){
-		//res.sendFile(path.join(__dirname + '/../public/home.html'));
 		res.render('home');
 
 	});
