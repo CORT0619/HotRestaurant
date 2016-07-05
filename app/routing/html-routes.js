@@ -5,7 +5,7 @@
 var path = require('path');
 
 var tableArray = require('../data/table-data.js');
-
+var waitingArray = require('../data/waitinglist-data.js');
 
 
 // ===============================================================================
@@ -20,7 +20,16 @@ module.exports = function(app){
 	// ---------------------------------------------------------------------------
 
 	app.get('/tables', function(req, res){
-		res.render('tables', {tables: tableArray});
+		tableArray.forEach(function(tables, index, array){ //for each item in the tables array you are added a number property
+			tables.number = index + 1;
+		});
+
+		waitingArray.forEach(function(waitListed, index, array){
+			waitListed.number = index + 1;
+		});
+
+		res.render('tables', {tables: tableArray,
+							  waitListed: waitingArray});
 	});
 
 	app.get('/reserve', function(req, res){

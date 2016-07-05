@@ -30,11 +30,15 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 
 var exphbs = require('express-handlebars');
+var hbs = require('handlebars');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 
+hbs.registerHelper("onePlus", function(value, options){
 
+	return parseInt(value) + 1;
+});
 
 
 
